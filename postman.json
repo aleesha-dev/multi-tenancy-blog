@@ -1,0 +1,1005 @@
+{
+	"info": {
+		"_postman_id": "533aebad-e5f7-4217-9b3a-26736faaa4d5",
+		"name": "Multi Tenant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29408278"
+	},
+	"item": [
+		{
+			"name": "Tenants",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "List users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show user details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/users/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"name\": \"Test\",\r\n    \"email\" : \"createuser@gmail.com\",\r\n    \"role_id\" : 2,\r\n    \"password\" : \"admin1234\",\r\n    \"password_confirmation\": \"admin1234\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n{\r\n    \"name\": \"Updated User Name\",\r\n    \"email\": \"updatedusers@example.com\",\r\n    \"role_id\": 2,\r\n    \"password\": \"admin12345\",\r\n    \"password_confirmation\": \"admin12345\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/users/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"users",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/users/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Restore User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/users/2/restore",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"users",
+										"2",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"createuser@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/user/forgot-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"user",
+										"forgot-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"token\": \"4c8e510e8f090291be5f5363eced5b30867d89011f2e70fb61266734c7bc9072\",\r\n    \"email\": \"createuser@gmail.com\",\r\n    \"password\": 12345678,\r\n    \"password_confirmation\": 12345678\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/user/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"user",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Force Delete User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/users/2/force-delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"users",
+										"2",
+										"force-delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "List Roles",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show role details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/roles/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"roles",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Role",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"name\": \"Test\",\r\n    \"permissions\" : [\"jkk\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Role",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n{\r\n    \"name\": \"Updated Role Name\",\r\n    \"permissions\" : [\"create_blog\"]\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/roles/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"roles",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Role",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/roles/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"roles",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Blogs",
+					"item": [
+						{
+							"name": "List Blogs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/blogs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"blogs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show blog details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/blogs/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"blogs",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Blog",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"title\":\"test\",\r\n    \"content\" : \"testing\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/blogs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"blogs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Restore Blog",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/blogs/2/restore",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"blogs",
+										"2",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Blog",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"title\":\"test\",\r\n    \"content\" : \"testing 123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/blogs/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"blogs",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Blog",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/blogs/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"blogs",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Force Delete Blog",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{api_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/{{tenant_id}}/blogs/2/force-delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{tenant_id}}",
+										"blogs",
+										"2",
+										"force-delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tenants User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Set API token\", function () {\r",
+									"    // Assuming the token is in the response JSON at 'authorization.access_token'\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const apiToken = responseJson.data.token;\r",
+									"    \r",
+									"    // Set the token in the Postman environment variable 'api_token'\r",
+									"    pm.environment.set(\"api_token\", apiToken);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"createuser@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/{{tenant_id}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{tenant_id}}",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login Super Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Set API token\", function () {\r",
+							"    // Assuming the token is in the response JSON at 'authorization.access_token'\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const apiToken = responseJson.data.token;\r",
+							"    \r",
+							"    // Set the token in the Postman environment variable 'api_token'\r",
+							"    pm.environment.set(\"api_token\", apiToken);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Tenants",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{api_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"domain\": \"excwcfdddcd1.com\",\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john@examfpdlec21.com\",\r\n    \"password\": \"admin1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/tenants",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
